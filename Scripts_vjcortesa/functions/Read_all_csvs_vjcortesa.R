@@ -3,6 +3,7 @@
 
   library(readr)
 
+  
   # Find the target folder matching the pattern
   folder_path <- "C:/Users/jcortesarevalo/OneDrive - Delft University of Technology/Documents/TUDelft/18_Game Data Analysis/R data analysis BEPs/Datasets"
   folder_pattern <- "housinggame_session_20_251007_VerzekeraarsMasterClass"

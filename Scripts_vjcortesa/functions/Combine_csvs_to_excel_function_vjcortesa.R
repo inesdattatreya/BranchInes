@@ -1,4 +1,4 @@
-combine_csvs_to_excel <- function(folder_path = "local path", folder_pattern = "csv_folder", output_prefix = "combined") {
+combine_csvs_to_excel <- function(folder_path = "local path", folder_pattern = "csv_folder", output_prefix = "Dataset_") {
   # Load required libraries
   if (!requireNamespace("readr", quietly = TRUE)) install.packages("readr")
   if (!requireNamespace("openxlsx", quietly = TRUE)) install.packages("openxlsx")
@@ -10,7 +10,7 @@ combine_csvs_to_excel <- function(folder_path = "local path", folder_pattern = "
   
   # Get the current script directory
   script_dir <- dirname(rstudioapi::getActiveDocumentContext()$path)
-  print(script_dir)
+
   # Find the target folder matching the pattern
   folders <- list.dirs(path = folder_path, full.names = TRUE, recursive = FALSE)
   target_folder <- folders[grepl(folder_pattern, basename(folders))][1]
@@ -41,7 +41,8 @@ combine_csvs_to_excel <- function(folder_path = "local path", folder_pattern = "
   timestamp <- format(Sys.time(), "%Y%m%d_%H%M%S")
   #output_filename <- paste0(output_prefix, "_", folder_base, "_", timestamp, ".xlsx")
   output_filename <- paste0(output_prefix, "_", folder_base, ".xlsx")
-  output_path <- file.path(script_dir, output_filename)
+  data_output_dir <- paste0(script_dir,"/data_output")
+  output_path <- file.path(data_output_dir, output_filename)
   
   # Save workbook
   saveWorkbook(wb, output_path, overwrite = TRUE)
